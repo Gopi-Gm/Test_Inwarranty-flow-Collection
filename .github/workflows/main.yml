@@ -1,50 +1,43 @@
-name : Bruno Collection Workflow
+name: Bruno Collection Workflow
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-  - cron: "30 05 * * *" # 11 am IST daily
-  - cron: "30 14 * * *" # 8 pm IST daily
-  - cron: "00 06 * * 1-5" # 11:30 am IST mon-fri
 
 jobs:
   run-bruno-tests:
-    runs-on: self-hosted
+    runs-on: self-hosted   # Make sure a runner with this label is online
 
     steps:
-      - name: checkout the code
+      - name: Checkout the code
         uses: actions/checkout@v4.2.2
 
-
-      - name: Install node js and npm
+      - name: Install Node.js and npm
         uses: actions/setup-node@v3.9.1
         with:
           node-version: '22'
 
-      - name: Install newman and html extra globally
+      - name: Install Newman and html extra globally
         run: |
-             npm install -g newman
-             npm install -g newman-reporter-htmlextra
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
 
-
-      - name: Run the bruno collection with newman
+      - name: Run the Bruno collection with Newman
         run: |
-             newman run 'Inwarranty-flow Collection.bruno_collection.json' \
-             -e QA.bruno_environment.json \
-             -r cli,htmlextra \
-             --reporter-htmlextra-export ./newman/index.html
+          newman run 'Inwarranty-flow Collection.bruno_collection.json' \
+          -e QA.bruno_environment.json \
+          -r cli,htmlextra \
+          --reporter-htmlextra-export ./newman/index.html
 
-
-      - name: Newman report
-        if: always() # ensure that the archive executed irrespective of whether the previous step has passed or not
+      - name: Upload Newman report
+        if: always()
         uses: actions/upload-artifact@v4.6.2
         with:
           name: Newman Report
           path: newman/*.html
 
-      - name: Creating github page branch
+      - name: Create GitHub Pages branch
         if: always()
         uses: peaceiris/actions-gh-pages@v4.0.0
         with:
@@ -63,11 +56,6 @@ jobs:
           to: gopimohan7321@gmail.com
           from: ${{ secrets.GITHUB_USERNAME }}
           body: |
-                Hi, 
-                Phoenix inwarranty flow has been executed and the report has been published 
-                Please find the url here: https://github.com/Gopi-Gm/Test_Inwarranty-flow-Collection
-                
-              
-      
-
-        
+            Hi, 
+            Phoenix inwarranty flow has been executed and the report has been published. 
+            Please find the url here: https://github.com/Gopi-Gm/Test_Inwarranty-flow-Collection
