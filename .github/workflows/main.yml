@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-bruno-tests:
-    runs-on: self-hosted   # Make sure a runner with this label is online
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the code
