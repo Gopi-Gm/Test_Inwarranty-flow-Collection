@@ -50,8 +50,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ gopirenu456@gmail.com }}
-          password: ${{ Gopi715169 }}
+          username: ${{ secrets.GITHUB_USERNAME }}
+          password: ${{ secrets.GITHUB_PASSWORD }}
           subject: INWARRANTY FLOW TEST EXECUTION
           to: gopimohan7321@gmail.com
           from: ${{ secrets.GITHUB_USERNAME }}
