@@ -10,7 +10,7 @@ on:
   - cron: "00 06 * * 1-5" # 11:30 am IST mon-fri
 
 jobs:
-  run-postman-tests:
+  run-bruno-tests:
     runs-on: self-hosted
 
     steps:
