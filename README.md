@@ -1,5 +1,5 @@
-Postman API Automation Integration with Github Actions
-This repository is a demonstration for POC for integrating postman tests with github actions.The tests are written in postman and they are executed on the virtual machine with the help of newman and newman-reporter-htmlextra. Github actions will trigger the project execution on every push on the main branch.Along with that this will be executed manually using workflow_dispatch and runs on the scheduled time with the help of the cron job.
+Bruno API Automation Integration with Github Actions
+This repository is a demonstration for POC for integrating postman tests with github actions.The tests are written in Bruno and they are executed on the virtual machine with the help of newman and newman-reporter-htmlextra. Github actions will trigger the project execution on every push on the main branch.Along with that this will be executed manually using workflow_dispatch and runs on the scheduled time with the help of the cron job.
 
 The html reports are archived and kept in artifact section for the team to download it .Along with that they can view the report directly from the github page . The latest report will be mailed to the team members using Gmail SMTP.
 
@@ -26,8 +26,8 @@ TECH STACK
 
 Project Structure
 In Warranty
-├─ Inwarranty-flow Collection.postman_collection.json
-├─ QA.postman_environment.json
+├─ Inwarranty-flow Collection.bruno_collection.json
+├─ QA.bruno_environment.json
 
 Git hub page
 You can view the latest report in the github link: 
